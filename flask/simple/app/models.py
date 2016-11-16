@@ -3,7 +3,7 @@ Created on 16 Nov 2016
 
 @author: gbstring
 '''
-from app import db
+from .__init__ import db
 
 class Title(db.Model):
     __tablename__ = 'titles'

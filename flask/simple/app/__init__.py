@@ -3,7 +3,8 @@ from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from config import config
-from app.forms import NameForm
+from app.forms import NameForm, TitleForm
+from app.views import *
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -29,9 +30,7 @@ def create_app(config_name):
         
         return render_template('index.html', form=form, name=name)
     
-    @app.route('/user/<name>')
-    def user(name):
-        return render_template('user.html', name=name)
+    
     
     @app.route('/volnum/<num>')
     def volnum(num):
@@ -40,7 +39,5 @@ def create_app(config_name):
     @app.errorhandler(404) 
     def page_not_found(e):
         return render_template('404.html'), 404
-        
-    
-    
+      
     return app

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="page-header">
+		<h1>Volume number {{ num }}</h1>
+		<p class="volume">
+			<span class="volnum">{{ title.volnum }}</span>
+			<span class="title">{{ title.name }}</span>
+		</p>
+	</div>
+</div>
+{% endblock %}

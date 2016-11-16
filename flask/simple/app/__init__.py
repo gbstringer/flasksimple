@@ -1,13 +1,12 @@
 import os
 from flask import Flask, render_template
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import Required
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
 from config import config
 from app.forms import NameForm
 
 bootstrap = Bootstrap()
+db = SQLAlchemy()
 
    
 def create_app(config_name):
@@ -17,7 +16,7 @@ def create_app(config_name):
     config[config_name].init_app(app)
     
     bootstrap.init_app(app)
-    
+    db.init_app(app)
     
     @app.route('/', methods=['GET', 'POST'])
     def index():
@@ -33,6 +32,10 @@ def create_app(config_name):
     @app.route('/user/<name>')
     def user(name):
         return render_template('user.html', name=name)
+    
+    @app.route('/volnum/<num>')
+    def volnum(num):
+        return render_template('volnum.html', num=num)
     
     @app.errorhandler(404) 
     def page_not_found(e):

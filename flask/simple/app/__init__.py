@@ -5,13 +5,11 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 from flask_bootstrap import Bootstrap
 from config import config
+from app.forms import NameForm
 
 bootstrap = Bootstrap()
 
-class NameForm(FlaskForm):
-    name = StringField("What is your name?", validators=[Required()])
-    submit = SubmitField('Submit')
-    
+   
 def create_app(config_name):
     tmpl_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'templates')
     app = Flask(__name__, template_folder=tmpl_folder)

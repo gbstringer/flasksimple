@@ -3,9 +3,10 @@ from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from config import config
-from app.forms import NameForm, TitleForm
-from app.views import *
-
+#from app.forms import NameForm, TitleForm
+#from app.views import *
+from .main import main as main_blueprint
+    
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 
@@ -19,6 +20,9 @@ def create_app(config_name):
     bootstrap.init_app(app)
     db.init_app(app)
     
+    app.register_blueprint(main_blueprint)
+    
+    '''
     @app.route('/', methods=['GET', 'POST'])
     def index():
         
@@ -29,9 +33,9 @@ def create_app(config_name):
             form.name.data = ''
         
         return render_template('index.html', form=form, name=name)
+    '''
     
-    
-    
+    '''
     @app.route('/volnum/<num>')
     def volnum(num):
         return render_template('volnum.html', num=num)
@@ -39,5 +43,6 @@ def create_app(config_name):
     @app.errorhandler(404) 
     def page_not_found(e):
         return render_template('404.html'), 404
+    '''
       
     return app

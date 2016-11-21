@@ -15,6 +15,7 @@ class NameForm(FlaskForm):
     
 class TitleForm(FlaskForm):
     name = StringField('Name of volume: ', validators=[Required()])
+    author = StringField('Author: ', validators=[Required()])
     volnum = IntegerField('Volume number: ', validators=[NumberRange(min=1,max=999,message='Please enter a valid volume number')])
     submit = SubmitField('Submit')
     

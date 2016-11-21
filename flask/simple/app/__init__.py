@@ -9,7 +9,6 @@ from .main import main as main_blueprint
     
 bootstrap = Bootstrap()
 db = SQLAlchemy()
-
    
 def create_app(config_name):
     tmpl_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'templates')
